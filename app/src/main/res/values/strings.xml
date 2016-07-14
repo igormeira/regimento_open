@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Regimento Open</string>
+    <string name="action_ranking">Ranking</string>
+    <string name="action_tournament">Tournament</string>
+
+    <string name="add">Adicionar</string>
+    <string name="del">Remover</string>
+    <string name="cancel">Cancelar</string>
+    <string name="update">Atualizar</string>
+    <string name="title_activity_ranking">Ranking</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_add_player">Adicionar Jogador</string>
+    <string name="title_activity_tournament">Torneio</string>
+    <string name="title_activity_tournament_games">Confrontos</string>
+    <string name="title_activity_edit_player">Editar Jogador</string>
+</resources>

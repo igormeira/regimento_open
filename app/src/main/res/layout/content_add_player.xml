@@ -58,6 +58,7 @@
                     android:inputType="numberDecimal"
                     android:hint="*Vitórias"
                     android:ems="10"
+                    android:textAlignment="center"
                     android:id="@+id/editText_add_win"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal"/>
@@ -68,6 +69,7 @@
                     android:inputType="numberDecimal"
                     android:hint="*Derrotas"
                     android:ems="10"
+                    android:textAlignment="center"
                     android:id="@+id/editText_add_lose"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal" />
@@ -95,6 +97,7 @@
                     android:inputType="numberDecimal"
                     android:hint="*Ganhos"
                     android:ems="10"
+                    android:textAlignment="center"
                     android:id="@+id/editText_add_games_win"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal" />
@@ -104,6 +107,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:hint="*Perdidos"
+                    android:textAlignment="center"
                     android:ems="10"
                     android:id="@+id/editText_add_games_lose"
                     android:layout_weight="0.5"
@@ -132,6 +136,7 @@
                     android:inputType="numberDecimal"
                     android:hint="*Ganhos"
                     android:ems="10"
+                    android:textAlignment="center"
                     android:id="@+id/editText_add_sets_win"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal" />
@@ -142,6 +147,7 @@
                     android:inputType="numberDecimal"
                     android:hint="*Perdidos"
                     android:ems="10"
+                    android:textAlignment="center"
                     android:id="@+id/editText_add_sets_lose"
                     android:layout_weight="0.5"
                     android:layout_gravity="center_horizontal" />

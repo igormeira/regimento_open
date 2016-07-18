@@ -24,10 +24,6 @@ public class Player {
         this.setsL = setsL;
     }
 
-    public Player() {
-
-    }
-
     public long getId() {
         return id;
     }
@@ -64,14 +60,12 @@ public class Player {
     public void setGamesW(Integer gamesW) {
         this.gamesW = gamesW;
     }
-
     public Integer getGamesL() {
         return gamesL;
     }
     public void setGamesL(Integer gamesL) {
         this.gamesL = gamesL;
     }
-
     public Integer getSetsL() {
         return setsL;
     }

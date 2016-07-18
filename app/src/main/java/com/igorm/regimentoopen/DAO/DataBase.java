@@ -28,9 +28,9 @@ public class DataBase {
         values.put("win", item.getWin());
         values.put("lose", item.getLose());
         values.put("games_win", item.getGamesW());
-        values.put("games_lose", item.getGamesW());
+        values.put("games_lose", item.getGamesL());
         values.put("sets_win", item.getSetsW());
-        values.put("sets_lose", item.getGamesW());
+        values.put("sets_lose", item.getSetsL());
 
         db.insert("player", null, values);
     }
@@ -86,7 +86,7 @@ public class DataBase {
     }
 
     public Cursor searchPlayerByName(String playerName) {
-        Player player = new Player();
+        //Player player = new Player();
         Cursor cursor;
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
 

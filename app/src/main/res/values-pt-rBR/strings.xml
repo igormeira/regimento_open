@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Regimento Open</string>
+    <string name="action_ranking">Ranking</string>
+    <string name="action_tournament">Torneio</string>
+
+    <string name="add">Adicionar</string>
+    <string name="del">Remover</string>
+    <string name="cancel">Cancelar</string>
+    <string name="update">Atualizar</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="title_activity_add_player">Adicionar Jogador</string>
+    <string name="title_activity_edit_player">Editar Jogador</string>
+    <string name="title_activity_match">Partida - Simples</string>
+    <string name="title_activity_doubles">Duplas</string>
+    <string name="title_activity_main">Simples</string>
+    <string name="title_activity_ranking">Ranking - Simples</string>
+    <string name="title_activity_add_double">Adicionar Dupla</string>
+    <string name="title_activity_edit_double">Editar Dupla</string>
+    <string name="title_activity_ranking_doubles">Ranking - Duplas</string>
+    <string name="title_activity_match_doubles">Partida - Duplas</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="single">Simples</string>
+    <string name="doubles">Duplas</string>
+    <string name="ranking">Ranking</string>
+    <string name="match_result">+ Partida</string>
+    <string name="players">Jogadores</string>
+    <string name="double_players">Duplas</string>
+
+    <string name="hint_nameP1">*Nome - Jogador 1</string>
+    <string name="hint_nameP2">*Nome - Jogador 2</string>
+    <string name="hint_win">*Ganho</string>
+    <string name="hint_lose">*Perdido</string>
+    <string name="matches">Partidas</string>
+    <string name="games">Games</string>
+    <string name="sets">Sets</string>
+    <string name="hint_name">*Name</string>
+    <string name="double_d1">*Dupla 1</string>
+    <string name="double_d2">*Dupla 2</string>
+    <string name="player_p1">*Jogador 1</string>
+    <string name="player_p2">*Jogador 2</string>
+
+    <string name="blank_field">Preecher campo!</string>
+    <string name="negative_win">Vitórias não podem ser negativas!</string>
+    <string name="negative_lose">Derrotas não podem ser negativas!</string>
+    <string name="updated">Atualizado!</string>
+    <string name="deleted">Deletado!</string>
+    <string name="added">Adicionado!</string>
+
+
+    <string name="email_dev">igormeira.dev@gmail.com</string>
+
+</resources>

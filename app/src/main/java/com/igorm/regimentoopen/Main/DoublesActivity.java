@@ -1,0 +1,147 @@
+package com.igorm.regimentoopen.Main;
+
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+
+import com.igorm.regimentoopen.DAO.DataBaseCore;
+import com.igorm.regimentoopen.DAO.DoublesDAO;
+import com.igorm.regimentoopen.Doubles.AddDoubleActivity;
+import com.igorm.regimentoopen.Doubles.EditDoubleActivity;
+import com.igorm.regimentoopen.R;
+
+public class DoublesActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView list;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_doubles);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DoublesDAO db = new DoublesDAO(this);
+        final Cursor cursor = db.searchDouble();
+
+        String[] nomeColunas = new String [] {DataBaseCore.NAME_P1, DataBaseCore.NAME_P2, DataBaseCore.WIN, DataBaseCore.LOSE, DataBaseCore.GAMES_WIN, DataBaseCore.GAMES_LOSE, DataBaseCore.SETS_WIN, DataBaseCore.SETS_LOSE};
+        int[] idViews = new int[] {R.id.namePlayer1, R.id.namePlayer2, R.id.win, R.id.lose, R.id.games_win, R.id.games_lose, R.id.sets_win, R.id.sets_lose};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getBaseContext(), R.layout.double_view, cursor,
+                nomeColunas, idViews, 0);
+
+        list = (ListView)findViewById(R.id.listView_doubles);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intentEdit = new Intent(DoublesActivity.this, EditDoubleActivity.class);
+                intentEdit.putExtra("position", position);
+                startActivity(intentEdit);
+
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intentEdit = new Intent(DoublesActivity.this, AddDoubleActivity.class);
+                    startActivity(intentEdit);
+                }
+            });
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.doubles, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.players) {
+            final Intent main_intent = new Intent(this, MainActivity.class);
+            startActivity(main_intent);
+            return true;
+        } else if (id == R.id.add_match_single) {
+            final Intent match_intent = new Intent(this, MatchSingleActivity.class);
+            startActivity(match_intent);
+            return true;
+        } else if (id == R.id.ranking_single) {
+            final Intent ranking_intent = new Intent(this, RankingSingleActivity.class);
+            startActivity(ranking_intent);
+            return true;
+        } else if (id == R.id.double_players) {
+            onBackPressed();
+        } else if (id == R.id.add_match_doubles) {
+            final Intent match_intent = new Intent(this, MatchDoublesActivity.class);
+            startActivity(match_intent);
+            return true;
+        } else if (id == R.id.ranking_doubles) {
+            final Intent ranking_intent = new Intent(this, RankingDoublesActivity.class);
+            startActivity(ranking_intent);
+            return true;
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+}

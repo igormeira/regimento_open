@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/single">
+        <menu>
+            <item
+                android:id="@+id/players"
+                android:icon="@drawable/ic_single_24dp"
+                android:title="@string/players" />
+            <item
+                android:id="@+id/add_match_single"
+                android:icon="@mipmap/ic_match"
+                android:title="@string/match_result" />
+            <item
+                android:id="@+id/ranking_single"
+                android:icon="@mipmap/ic_podium"
+                android:title="@string/ranking" />
+        </menu>
+    </item>
+
+    <item android:title="@string/doubles">
+        <menu>
+            <item
+                android:id="@+id/double_players"
+                android:icon="@drawable/ic_double_24dp"
+                android:title="@string/double_players" />
+            <item
+                android:id="@+id/add_match_doubles"
+                android:icon="@mipmap/ic_match"
+                android:title="@string/match_result" />
+            <item
+                android:id="@+id/ranking_doubles"
+                android:icon="@mipmap/ic_podium"
+                android:title="@string/ranking" />
+        </menu>
+    </item>
+
+</menu>

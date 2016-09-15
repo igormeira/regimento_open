@@ -17,7 +17,7 @@
         </activity>
         <activity
             android:name=".Main.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main.RankingActivity"
+            android:name=".Main.RankingSingleActivity"
             android:label="@string/title_activity_ranking"
             android:parentActivityName=".Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -44,24 +44,6 @@
                 android:value=".Main.MainActivity" />
         </activity>
         <activity
-            android:name=".Tournament.TournamentActivity"
-            android:label="@string/title_activity_tournament"
-            android:parentActivityName=".Main.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Main.MainActivity" />
-        </activity>
-        <activity
-            android:name=".Tournament.TournamentGamesActivity"
-            android:label="@string/title_activity_tournament_games"
-            android:parentActivityName=".Tournament.TournamentActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Tournament.TournamentActivity" />
-        </activity>
-        <activity
             android:name=".Player.EditPlayerActivity"
             android:label="@string/title_activity_edit_player"
             android:parentActivityName=".Main.MainActivity"
@@ -71,13 +53,53 @@
                 android:value=".Main.MainActivity" />
         </activity>
         <activity
-            android:name=".Match.MatchActivity"
+            android:name=".Main.MatchSingleActivity"
             android:label="@string/title_activity_match"
             android:parentActivityName=".Main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.igorm.regimentoopen.Main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Main.DoublesActivity"
+            android:label="@string/title_activity_doubles"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Doubles.AddDoubleActivity"
+            android:label="@string/title_activity_add_double"
+            android:parentActivityName=".Main.DoublesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.igorm.regimentoopen.Main.DoublesActivity" />
+        </activity>
+        <activity
+            android:name=".Doubles.EditDoubleActivity"
+            android:label="@string/title_activity_edit_double"
+            android:parentActivityName=".Main.DoublesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.igorm.regimentoopen.Main.DoublesActivity" />
+        </activity>
+        <activity
+            android:name=".Main.MatchDoublesActivity"
+            android:label="@string/title_activity_match_doubles"
+            android:parentActivityName=".Main.DoublesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.igorm.regimentoopen.Main.DoublesActivity" />
+        </activity>
+        <activity
+            android:name=".Main.RankingDoublesActivity"
+            android:label="@string/title_activity_ranking_doubles"
+            android:parentActivityName=".Main.DoublesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.igorm.regimentoopen.Main.DoublesActivity" />
         </activity>
     </application>
 

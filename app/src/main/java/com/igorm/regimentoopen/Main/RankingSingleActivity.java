@@ -3,8 +3,6 @@ package com.igorm.regimentoopen.Main;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -22,11 +20,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.igorm.regimentoopen.DAO.Core;
-import com.igorm.regimentoopen.DAO.DataBase;
+import com.igorm.regimentoopen.DAO.DataBaseCore;
+import com.igorm.regimentoopen.DAO.SinglesDAO;
 import com.igorm.regimentoopen.R;
 
-public class RankingActivity extends AppCompatActivity {
+public class RankingSingleActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -55,7 +53,7 @@ public class RankingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
 
         //ListViews
-        DataBase db = new DataBase(this);
+        SinglesDAO db = new SinglesDAO(this);
         cursor = db.rankingByPlayer();
 
         context = getBaseContext();
@@ -130,12 +128,9 @@ public class RankingActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_ranking, container, false);
-            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                String[] nomeColunasWin = new String [] {Core.NAME, Core.WIN};
+                String[] nomeColunasWin = new String [] {DataBaseCore.NAME, DataBaseCore.WIN};
                 int[] idViewsWin = new int[] {R.id.namePlayer_win, R.id.ranking_win};
                 adapterRankingW = new SimpleCursorAdapter(context, R.layout.ranking_win_view, cursor[0],
                         nomeColunasWin, idViewsWin, 0);
@@ -143,7 +138,7 @@ public class RankingActivity extends AppCompatActivity {
                 list.setAdapter(adapterRankingW);
             }
             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
-                String[] nomeColunasGames = new String [] {Core.NAME, Core.GAMES_WIN};
+                String[] nomeColunasGames = new String [] {DataBaseCore.NAME, DataBaseCore.GAMES_WIN};
                 int[] idViewsGames = new int[] {R.id.namePlayer_games, R.id.ranking_games};
                 adapterRankingG = new SimpleCursorAdapter(context, R.layout.ranking_games_view, cursor[1],
                         nomeColunasGames, idViewsGames, 0);
@@ -151,7 +146,7 @@ public class RankingActivity extends AppCompatActivity {
                 list.setAdapter(adapterRankingG);
             }
             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3) {
-                String[] nomeColunasSets = new String [] {Core.NAME, Core.SETS_WIN};
+                String[] nomeColunasSets = new String [] {DataBaseCore.NAME, DataBaseCore.SETS_WIN};
                 int[] idViewsSets = new int[] {R.id.namePlayer_sets, R.id.ranking_sets};
                 adapterRankingS = new SimpleCursorAdapter(context, R.layout.ranking_sets_view, cursor[2],
                         nomeColunasSets, idViewsSets, 0);
@@ -190,11 +185,11 @@ public class RankingActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "VITÓRIAS";
+                    return getString(R.string.matches).toUpperCase();
                 case 1:
-                    return "GAMES";
+                    return getString(R.string.games).toUpperCase();
                 case 2:
-                    return "SETS";
+                    return getString(R.string.sets).toUpperCase();
             }
             return null;
         }

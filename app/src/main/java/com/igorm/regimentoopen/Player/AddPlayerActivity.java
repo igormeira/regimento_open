@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.igorm.regimentoopen.DAO.DataBase;
+import com.igorm.regimentoopen.DAO.SinglesDAO;
 import com.igorm.regimentoopen.Main.MainActivity;
 import com.igorm.regimentoopen.R;
 
@@ -57,31 +57,33 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     private void addPlayer() {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                DataBase db = new DataBase(getBaseContext());
-                String name = nameAddET.getText().toString();
-                String win = winAddET.getText().toString();
-                String lose = loseAddET.getText().toString();
-                String gamesW = gamesAddWET.getText().toString();
-                String gamesL = gamesAddLET.getText().toString();
-                String setsW = setsAddWET.getText().toString();
-                String setsL = setsAddLET.getText().toString();
+                    SinglesDAO db = new SinglesDAO(getBaseContext());
+                    String name = nameAddET.getText().toString();
+                    String win = winAddET.getText().toString();
+                    String lose = loseAddET.getText().toString();
+                    String gamesW = gamesAddWET.getText().toString();
+                    String gamesL = gamesAddLET.getText().toString();
+                    String setsW = setsAddWET.getText().toString();
+                    String setsL = setsAddLET.getText().toString();
 
-                if (validateFields(name, win, lose, gamesW, gamesL, setsW, setsL)) {
-                    Player player = new Player(name, Integer.parseInt(win), Integer.parseInt(lose), Integer.parseInt(gamesW), Integer.parseInt(gamesL),
-                            Integer.parseInt(setsW), Integer.parseInt(setsL));
+                    if (validateFields(name, win, lose, gamesW, gamesL, setsW, setsL)) {
+                        Player player = new Player(name, Integer.parseInt(win), Integer.parseInt(lose), Integer.parseInt(gamesW), Integer.parseInt(gamesL),
+                                Integer.parseInt(setsW), Integer.parseInt(setsL));
 
-                    db.addPlayer(player);
+                        db.addPlayer(player);
 
-                    startActivity(intentMain);
-                    Toast.makeText(AddPlayerActivity.this, "Jogador adicionado!", Toast.LENGTH_SHORT).show();
-                    finish();
+                        startActivity(intentMain);
+                        Toast.makeText(AddPlayerActivity.this, getString(R.string.added), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private boolean validateFields(String name, String win, String lose, String gamesW, String gamesL, String setsW, String setsL) {
@@ -91,37 +93,37 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     private boolean validateSets(String setsW, String setsL) {
         boolean bool = false;
-        if (setsW == null || setsW.equals("")) setsAddWET.setError("Preencger campo!");
-        else if (Integer.parseInt(setsW) < 0) setsAddWET.setError("Vitórias não podem ser negativas!");
-        else if (setsL == null || setsL.equals("")) setsAddLET.setError("Preencger campo!");
-        else if (Integer.parseInt(setsL) < 0) setsAddLET.setError("Derrotas não podem ser negativas!");
+        if (setsW == null || setsW.equals("")) setsAddWET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(setsW) < 0) setsAddWET.setError(getString(R.string.negative_win));
+        else if (setsL == null || setsL.equals("")) setsAddLET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(setsL) < 0) setsAddLET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateGames(String gamesW, String gamesL) {
         boolean bool = false;
-        if (gamesW == null || gamesW.equals("")) gamesAddWET.setError("Preencger campo!");
-        else if (Integer.parseInt(gamesW) < 0) gamesAddWET.setError("Vitórias não podem ser negativas!");
-        else if (gamesL == null || gamesL.equals("")) gamesAddLET.setError("Preencger campo!");
-        else if (Integer.parseInt(gamesL) < 0) gamesAddLET.setError("Derrotas não podem ser negativas!");
+        if (gamesW == null || gamesW.equals("")) gamesAddWET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(gamesW) < 0) gamesAddWET.setError(getString(R.string.negative_win));
+        else if (gamesL == null || gamesL.equals("")) gamesAddLET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(gamesL) < 0) gamesAddLET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateMatches(String win, String lose) {
         boolean bool = false;
-        if (win == null || win.equals("")) winAddET.setError("Preencger campo!");
-        else if (Integer.parseInt(win) < 0) winAddET.setError("Vitórias não podem ser negativas!");
-        else if (lose == null || lose.equals("")) loseAddET.setError("Preencger campo!");
-        else if (Integer.parseInt(lose) < 0) loseAddET.setError("Derrotas não podem ser negativas!");
+        if (win == null || win.equals("")) winAddET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(win) < 0) winAddET.setError(getString(R.string.negative_win));
+        else if (lose == null || lose.equals("")) loseAddET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(lose) < 0) loseAddET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateName(String name) {
         boolean bool = false;
-        if (name == null || name.equals("")) nameAddET.setError("Preencher campo!");
+        if (name == null || name.equals("")) nameAddET.setError(getString(R.string.blank_field));
         else bool = true;
         return bool;
     }

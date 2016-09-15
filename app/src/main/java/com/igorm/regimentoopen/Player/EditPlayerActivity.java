@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.igorm.regimentoopen.DAO.Core;
-import com.igorm.regimentoopen.DAO.DataBase;
+import com.igorm.regimentoopen.DAO.DataBaseCore;
+import com.igorm.regimentoopen.DAO.SinglesDAO;
 import com.igorm.regimentoopen.Main.MainActivity;
 import com.igorm.regimentoopen.R;
 
@@ -19,7 +19,7 @@ public class EditPlayerActivity extends AppCompatActivity {
 
     private Intent intentMain;
     private String cod;
-    private DataBase dbListView, db;
+    private SinglesDAO dbListView, db;
     private Cursor cursor;
     private EditText winET;
     private EditText loseET;
@@ -51,42 +51,46 @@ public class EditPlayerActivity extends AppCompatActivity {
         dataBaseGET(position);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DataBase dbUp = new DataBase(getBaseContext());
-                String name = nameET.getText().toString();
-                String win = winET.getText().toString();
-                String lose = loseET.getText().toString();
-                String gamesW = gamesWET.getText().toString();
-                String gamesL = gamesLET.getText().toString();
-                String setsW = setsWET.getText().toString();
-                String setsL = setsLET.getText().toString();
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SinglesDAO dbUp = new SinglesDAO(getBaseContext());
+                    String name = nameET.getText().toString();
+                    String win = winET.getText().toString();
+                    String lose = loseET.getText().toString();
+                    String gamesW = gamesWET.getText().toString();
+                    String gamesL = gamesLET.getText().toString();
+                    String setsW = setsWET.getText().toString();
+                    String setsL = setsLET.getText().toString();
 
-                if (validateFields(name, win, lose, gamesW, gamesL, setsW, setsL)) {
-                    dbUp.updatePlayer(Long.parseLong(cod), name, Integer.parseInt(win), Integer.parseInt(lose), Integer.parseInt(gamesW),
-                            Integer.parseInt(gamesL), Integer.parseInt(setsW), Integer.parseInt(setsL));
+                    if (validateFields(name, win, lose, gamesW, gamesL, setsW, setsL)) {
+                        dbUp.updatePlayer(Long.parseLong(cod), name, Integer.parseInt(win), Integer.parseInt(lose), Integer.parseInt(gamesW),
+                                Integer.parseInt(gamesL), Integer.parseInt(setsW), Integer.parseInt(setsL));
 
-                    startActivity(intentMain);
-                    Toast.makeText(EditPlayerActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
-                    finish();
+                        startActivity(intentMain);
+                        Toast.makeText(EditPlayerActivity.this, getString(R.string.updated), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
                 }
-
-            }
-        });
+            });
+        }
 
         FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        fab2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DataBase dbDel = new DataBase(getBaseContext());
-                dbDel.deletePlayer(Long.parseLong(cod));
+        if (fab2 != null) {
+            fab2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SinglesDAO dbDel = new SinglesDAO(getBaseContext());
+                    dbDel.deletePlayer(Long.parseLong(cod));
 
-                startActivity(intentMain);
-                Toast.makeText(EditPlayerActivity.this, "Jogador deletado!", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+                    startActivity(intentMain);
+                    Toast.makeText(EditPlayerActivity.this, getString(R.string.deleted), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.ic_back);
@@ -99,56 +103,56 @@ public class EditPlayerActivity extends AppCompatActivity {
 
     private boolean validateSets(String setsW, String setsL) {
         boolean bool = false;
-        if (setsW == null || setsW.equals("")) setsWET.setError("Preencger campo!");
-        else if (Integer.parseInt(setsW) < 0) setsWET.setError("Vitórias não podem ser negativas!");
-        else if (setsL == null || setsL.equals("")) setsLET.setError("Preencger campo!");
-        else if (Integer.parseInt(setsL) < 0) setsLET.setError("Derrotas não podem ser negativas!");
+        if (setsW == null || setsW.equals("")) setsWET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(setsW) < 0) setsWET.setError(getString(R.string.negative_win));
+        else if (setsL == null || setsL.equals("")) setsLET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(setsL) < 0) setsLET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateGames(String gamesW, String gamesL) {
         boolean bool = false;
-        if (gamesW == null || gamesW.equals("")) gamesWET.setError("Preencger campo!");
-        else if (Integer.parseInt(gamesW) < 0) gamesWET.setError("Vitórias não podem ser negativas!");
-        else if (gamesL == null || gamesL.equals("")) gamesLET.setError("Preencger campo!");
-        else if (Integer.parseInt(gamesL) < 0) gamesLET.setError("Derrotas não podem ser negativas!");
+        if (gamesW == null || gamesW.equals("")) gamesWET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(gamesW) < 0) gamesWET.setError(getString(R.string.negative_win));
+        else if (gamesL == null || gamesL.equals("")) gamesLET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(gamesL) < 0) gamesLET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateMatches(String win, String lose) {
         boolean bool = false;
-        if (win == null || win.equals("")) winET.setError("Preencger campo!");
-        else if (Integer.parseInt(win) < 0) winET.setError("Vitórias não podem ser negativas!");
-        else if (lose == null || lose.equals("")) loseET.setError("Preencger campo!");
-        else if (Integer.parseInt(lose) < 0) loseET.setError("Derrotas não podem ser negativas!");
+        if (win == null || win.equals("")) winET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(win) < 0) winET.setError(getString(R.string.negative_win));
+        else if (lose == null || lose.equals("")) loseET.setError(getString(R.string.blank_field));
+        else if (Integer.parseInt(lose) < 0) loseET.setError(getString(R.string.negative_lose));
         else bool = true;
         return bool;
     }
 
     private boolean validateName(String name) {
         boolean bool = false;
-        if (name == null || name.equals("")) nameET.setError("Preencher campo!");
+        if (name == null || name.equals("")) nameET.setError(getString(R.string.blank_field));
         else bool = true;
         return bool;
     }
 
     private void dataBaseGET(int position) {
-        dbListView = new DataBase(getBaseContext());
-        db = new DataBase(this);
+        dbListView = new SinglesDAO(getBaseContext());
+        db = new SinglesDAO(this);
         cursor = db.searchPlayer();
         cursor.moveToPosition(position);
-        cod = cursor.getString(cursor.getColumnIndexOrThrow(Core.ID));
+        cod = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseCore.ID));
         Cursor cursorAux = dbListView.searchItemById(Long.parseLong(cod));
 
-        nameET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.NAME)));
-        winET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.WIN)));
-        loseET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.LOSE)));
-        gamesWET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.GAMES_WIN)));
-        gamesLET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.GAMES_LOSE)));
-        setsWET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.SETS_WIN)));
-        setsLET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(Core.SETS_LOSE)));
+        nameET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.NAME)));
+        winET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.WIN)));
+        loseET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.LOSE)));
+        gamesWET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.GAMES_WIN)));
+        gamesLET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.GAMES_LOSE)));
+        setsWET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.SETS_WIN)));
+        setsLET.setText(cursorAux.getString(cursorAux.getColumnIndexOrThrow(DataBaseCore.SETS_LOSE)));
     }
 
 }

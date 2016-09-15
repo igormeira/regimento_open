@@ -14,4 +14,5 @@
     <string name="title_activity_tournament">Torneio</string>
     <string name="title_activity_tournament_games">Confrontos</string>
     <string name="title_activity_edit_player">Editar Jogador</string>
+    <string name="title_activity_match">Match Result</string>
 </resources>

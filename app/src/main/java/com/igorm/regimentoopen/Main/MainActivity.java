@@ -15,6 +15,7 @@ import android.widget.SimpleCursorAdapter;
 
 import com.igorm.regimentoopen.DAO.Core;
 import com.igorm.regimentoopen.DAO.DataBase;
+import com.igorm.regimentoopen.Match.MatchActivity;
 import com.igorm.regimentoopen.Player.AddPlayerActivity;
 import com.igorm.regimentoopen.Player.EditPlayerActivity;
 import com.igorm.regimentoopen.R;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ranking, menu);
-        //getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -91,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(ranking_intent);
                 return true;
             case R.id.action_tournament:
-                final Intent tournament_intent = new Intent(this, TournamentActivity.class);
-                startActivity(tournament_intent);
+                final Intent match_intent = new Intent(this, MatchActivity.class);
+                startActivity(match_intent);
                 return true;
         }
 

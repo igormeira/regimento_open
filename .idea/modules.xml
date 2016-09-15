@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RegimentoOpen.iml" filepath="$PROJECT_DIR$/RegimentoOpen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SplashScreenActivityTest/SplashScreenActivityTest.iml" filepath="$PROJECT_DIR$/SplashScreenActivityTest/SplashScreenActivityTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

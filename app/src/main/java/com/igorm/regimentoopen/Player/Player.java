@@ -24,6 +24,17 @@ public class Player {
         this.setsL = setsL;
     }
 
+    public Player(long id, String name, Integer win, Integer lose, Integer gamesW, Integer gamesL, Integer setsW, Integer setsL) {
+        this.id = id;
+        this.name = name;
+        this.lose = lose;
+        this.win = win;
+        this.gamesW = gamesW;
+        this.gamesL = gamesL;
+        this.setsW = setsW;
+        this.setsL = setsL;
+    }
+
     public long getId() {
         return id;
     }

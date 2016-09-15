@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class DataBase {
 
-    private SQLiteDatabase db;
+    private Context context;
 
-    public DataBase (Context ctx) {
-        Core auxBD = new Core(ctx);
-        db = auxBD.getWritableDatabase();
+    public DataBase (Context context) {
+        this.context = context;
     }
 
     public void addPlayer(Player item) {
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("nome", item.getName());
         values.put("win", item.getWin());
@@ -37,6 +37,7 @@ public class DataBase {
 
     public void updatePlayer(long id, String nome, Integer win, Integer lose, Integer games_win, Integer games_lose, Integer sets_win, Integer sets_lose) {
         ContentValues values = new ContentValues();
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         values.put("nome", nome);
         values.put("win", win);
         values.put("lose", lose);
@@ -52,6 +53,7 @@ public class DataBase {
     }
 
     public void deletePlayer(long id) {
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String where = Core.ID + "=" + id;
         db.delete("player", where, null);
         db.close();
@@ -59,6 +61,7 @@ public class DataBase {
 
     public Cursor searchItemById(long id) {
         Cursor cursor;
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
         String where = Core.ID + "=" + id;
         cursor = db.query("player", colunas, where, null, null, null, "nome ASC");
@@ -73,6 +76,7 @@ public class DataBase {
 
     public Cursor searchPlayer() {
         Cursor cursor;
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
 
         cursor = db.query("player", colunas, null, null, null, null, "nome ASC");
@@ -85,24 +89,33 @@ public class DataBase {
         return cursor;
     }
 
-    public Cursor searchPlayerByName(String playerName) {
-        //Player player = new Player();
-        Cursor cursor;
+    public Cursor[] searchPlayerByName(String player1, String player2) {
+        Cursor cursorP1, cursorP2;
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
+        String whereP1 = Core.NAME + "=" + player1;
+        String whereP2 = Core.NAME + "=" + player2;
 
-        cursor = db.query("player", colunas, "nome = playerName", null, null, null, "nome ASC");
+        cursorP1 = db.query("player", colunas, whereP1, null, null, null, "nome ASC");
+        cursorP2 = db.query("player", colunas, whereP2, null, null, null, "nome ASC");
 
-        if (cursor != null) {
-            cursor.moveToFirst();
+        if (cursorP1 != null) {
+            cursorP1.moveToFirst();
+        }
+        if (cursorP2 != null) {
+            cursorP2.moveToFirst();
         }
 
+        Cursor[] cursorList = new Cursor[] {cursorP1, cursorP2};
+
         db.close();
-        return cursor;
+        return cursorList;
     }
 
     public List<String> getAllPlayersName() {
         List<String> names = new ArrayList<String>();
         Cursor cursor;
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
 
         cursor = db.query("player", colunas, null, null, null, null, "nome ASC");
@@ -121,6 +134,7 @@ public class DataBase {
 
     public Cursor[] rankingByPlayer() {
         Cursor cursor_win, cursor_games, cursor_sets;
+        SQLiteDatabase db = new Core(context).getWritableDatabase();
         String[] colunas = new String[] {"_id", "nome", "win", "lose", "games_win", "games_lose", "sets_win", "sets_lose"};
 
         cursor_win = db.query("player", colunas, null, null, null, null, "cast(win as REAL) DESC");

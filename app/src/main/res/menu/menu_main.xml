@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_tournament"
         android:orderInCategory="1"
-        android:icon="@mipmap/ic_trophy"
+        android:icon="@mipmap/ic_match"
         android:title="@string/action_tournament"
         app:showAsAction="always" />
 </menu>

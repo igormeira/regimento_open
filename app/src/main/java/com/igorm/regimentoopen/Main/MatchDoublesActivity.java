@@ -57,11 +57,22 @@ public class MatchDoublesActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    saveMatchResult();
+                    if (validadeData()) saveMatchResult();
                 }
             });
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.ic_back);
+    }
+
+    private boolean validadeData() {
+        if (gamesD1.getText().toString().equals("")) gamesD1.setError(getString(R.string.blank_field));
+        else if (gamesD2.getText().toString().equals("")) gamesD2.setError(getString(R.string.blank_field));
+        else if (setsD1.getText().toString().equals("")) setsD1.setError(getString(R.string.blank_field));
+        else if (setsD2.getText().toString().equals("")) setsD2.setError(getString(R.string.blank_field));
+        else return true;
+
+        return false;
     }
 
     private void saveMatchResult() {

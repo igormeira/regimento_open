@@ -20,6 +20,7 @@
     <string name="title_activity_edit_double">Edit Double</string>
     <string name="title_activity_ranking_doubles">Ranking - Doubles</string>
     <string name="title_activity_match_doubles">Match Result - Doubles</string>
+    <string name="title_activity_about">About</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -53,7 +54,10 @@
     <string name="deleted">Successfully deleted!</string>
     <string name="added">Successfully added!</string>
 
-
     <string name="email_dev">igormeira.dev@gmail.com</string>
+    <string name="about_txt">Regimento Open is an App to save your match results between you and your friends. With it you can check who is winning, who is the number 1. And you can save results to singles and doubles. Play, save and never forget who is the number 1. \n </string>
+    <string name="developed">Developed by \n</string>
+    <string name="dev_name">Igor de Araújo Meira</string>
+    <string name="rate">Rate</string>
 
 </resources>

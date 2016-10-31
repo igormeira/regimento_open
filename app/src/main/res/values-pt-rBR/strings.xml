@@ -20,6 +20,7 @@
     <string name="title_activity_edit_double">Editar Dupla</string>
     <string name="title_activity_ranking_doubles">Ranking - Duplas</string>
     <string name="title_activity_match_doubles">Partida - Duplas</string>
+    <string name="title_activity_about">Sobre</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -53,7 +54,10 @@
     <string name="deleted">Deletado!</string>
     <string name="added">Adicionado!</string>
 
-
     <string name="email_dev">igormeira.dev@gmail.com</string>
+    <string name="about_txt">Regimento Open é um App para salvar seus resultados dos jogos entre você e seus amigos. Com ele você pode verificar quem está ganhando, que é o número 1. E você pode salvar os resultados para simples e duplas. Jogue, salve e nunca esqueça quem é o número 1.</string>
+    <string name="developed">Desenvolvido por \n</string>
+    <string name="dev_name">Igor de Araújo Meira</string>
+    <string name="rate">Avaliar</string>
 
 </resources>

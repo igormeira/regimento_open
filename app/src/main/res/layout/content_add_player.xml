@@ -14,148 +14,160 @@
     tools:showIn="@layout/activity_add_player"
     android:background="#FFFFFF">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/hint_name"
-        android:ems="10"
-        android:id="@+id/editText_add_name"
-        android:layout_gravity="center_horizontal" />
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/hint_name"
+            android:ems="10"
+            android:id="@+id/editText_add_name"
+            android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/matches"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal" />
-
-            <LinearLayout
-                android:orientation="horizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:weightSum="1">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
 
-                <EditText
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_win"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:id="@+id/editText_add_win"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_lose"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:id="@+id/editText_add_lose"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal" />
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/matches"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/games"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:weightSum="1">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:weightSum="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_win"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:id="@+id/editText_add_win"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal"/>
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_win"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:id="@+id/editText_add_games_win"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal" />
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_lose"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:id="@+id/editText_add_lose"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_lose"
-                    android:textAlignment="center"
-                    android:ems="10"
-                    android:id="@+id/editText_add_games_lose"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal" />
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/games"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/sets"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:weightSum="1">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:weightSum="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_win"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:id="@+id/editText_add_games_win"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_win"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:id="@+id/editText_add_sets_win"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal" />
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_lose"
+                            android:textAlignment="center"
+                            android:ems="10"
+                            android:id="@+id/editText_add_games_lose"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="@string/hint_lose"
-                    android:ems="10"
-                    android:textAlignment="center"
-                    android:id="@+id/editText_add_sets_lose"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center_horizontal" />
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/sets"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_win"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:id="@+id/editText_add_sets_win"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/hint_lose"
+                            android:ems="10"
+                            android:textAlignment="center"
+                            android:id="@+id/editText_add_sets_lose"
+                            android:layout_weight="0.5"
+                            android:layout_gravity="center_horizontal" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
-    </RelativeLayout>
-
+    </ScrollView>
 
 </LinearLayout>

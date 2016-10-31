@@ -101,6 +101,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.igorm.regimentoopen.Main.DoublesActivity" />
         </activity>
+        <activity
+            android:name=".Main.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".Main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.igorm.regimentoopen.Main.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

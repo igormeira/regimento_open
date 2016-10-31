@@ -57,11 +57,22 @@ public class MatchSingleActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    saveMatchResult();
+                    if (validadeData()) saveMatchResult();
                 }
             });
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.ic_back);
+    }
+
+    private boolean validadeData() {
+        if (gamesP1.getText().toString().equals("")) gamesP1.setError(getString(R.string.blank_field));
+        else if (gamesP2.getText().toString().equals("")) gamesP2.setError(getString(R.string.blank_field));
+        else if (setsP1.getText().toString().equals("")) setsP1.setError(getString(R.string.blank_field));
+        else if (setsP2.getText().toString().equals("")) setsP2.setError(getString(R.string.blank_field));
+        else return true;
+
+        return false;
     }
 
     private void saveMatchResult() {

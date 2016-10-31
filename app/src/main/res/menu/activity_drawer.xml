@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="@string/single">
         <menu>
@@ -32,6 +33,19 @@
                 android:id="@+id/ranking_doubles"
                 android:icon="@mipmap/ic_podium"
                 android:title="@string/ranking" />
+        </menu>
+    </item>
+
+    <item android:title="@string/title_activity_about">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_info_outline_black_24dp"
+                android:title="@string/title_activity_about" />
+            <item
+                android:id="@+id/rate"
+                android:icon="@drawable/ic_rate_24dp"
+                android:title="@string/rate" />
         </menu>
     </item>
 

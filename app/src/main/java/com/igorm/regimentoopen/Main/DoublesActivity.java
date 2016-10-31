@@ -2,6 +2,7 @@ package com.igorm.regimentoopen.Main;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -137,6 +138,18 @@ public class DoublesActivity extends AppCompatActivity
         } else if (id == R.id.ranking_doubles) {
             final Intent ranking_intent = new Intent(this, RankingDoublesActivity.class);
             startActivity(ranking_intent);
+            return true;
+        } else if (id == R.id.about) {
+            final Intent about_intent = new Intent(this, AboutActivity.class);
+            startActivity(about_intent);
+            return true;
+        } else if (id == R.id.rate) {
+            final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            }
             return true;
         }
 
